@@ -107,7 +107,7 @@
           p strong{
               font-size: 14px;
           }
-        .-amp-element{
+        .social-icon{
             border-radius: 50%;
         }
         </style>
@@ -117,18 +117,7 @@
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     </head>
     <body class="s_layout_fixed html not-front not-logged-in no-sidebars page-node page-node- page-node-5098 node-type-articles tm-0 anon noadmin">
-    <h1>Social Share</h1>
-
-        <div class="social-box">
-          <amp-social-share width=40 height=40 type="email" data-param-subject="Hello World" data-param-body="What's up?"></amp-social-share>
-          <amp-social-share width=40 height=40 type="facebook"
-                            data-param-text="Hello world"
-                            data-param-href="https://example.com/?ref=URL"
-                            data-param-app_id="145634995501895"></amp-social-share>
-
-          <amp-social-share width=40 height=40 type="twitter"></amp-social-share>
-          <amp-social-share width=40 height=40 type="linkedin" width="108" height="44" layout="fixed"></amp-social-share>
-        </div>
+   
         <div class="mobile-header">
           <a href="#"  class="menu-button" id="open-button">
               <svg xmlns="http://www.w3.org/2000/svg" class="brsvg-icon" viewBox="0 0 24 24" width="20" height="20" id="svg--humburger" x="100" y="235"><path fill="#162D40" d="M0 3.6V6h24V3.6H0zm0 7.2v2.4h24v-2.4H0zM0 18v2.4h24V18H0z"/></svg>
@@ -158,7 +147,16 @@
                 </div>
       </div>
       <div class="blog-container">
+        <div class="social-box">
+          <amp-social-share class="social-icon" width=40 height=40 type="email" data-param-subject="Hello World" data-param-body="What's up?"></amp-social-share>
+          <amp-social-share class="social-icon" width=40 height=40 type="facebook"
+                            data-param-text="Hello world"
+                            data-param-href="https://example.com/?ref=URL"
+                            data-param-app_id="145634995501895"></amp-social-share>
 
+          <amp-social-share class="social-icon" width=40 height=40 type="twitter"></amp-social-share>
+          <amp-social-share class="social-icon" width=40 height=40 type="linkedin" width="108" height="44" layout="fixed"></amp-social-share>
+        </div>
           <div class="col-xs-12 col-md-8">
           <div class="languageConversionBtn">
           </div>
