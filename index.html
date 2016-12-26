@@ -528,6 +528,8 @@ var Page1View = Backbone.View.extend({
     if (href && href.slice(0, protocol.length) !== protocol &&
         href.indexOf("javascript:") !== 0) {
       evt.preventDefault();
+      var page = {page:"page1"};
+      history.pushState(page,'Page 1','page1.html');
       Backbone.history.navigate(href, true);
     }
   });
