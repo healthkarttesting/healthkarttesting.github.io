@@ -589,6 +589,7 @@ BrowserStorage.prototype = {
   setItem: function(storageType, storageItemName, storageItemValue){
 
       var type = this.getStorageType(storageType);
+      alert(type);
       if(type && type.setItem && type.getItem) {
           try {
               type.setItem(storageItemName, storageItemValue);
@@ -600,6 +601,7 @@ BrowserStorage.prototype = {
       else {
           document.cookie = storageItemName+"=" + storageItemValue;
       }
+      alert(document.cookie);
   },
 
   removeItem: function(storageType, storageItemName){
