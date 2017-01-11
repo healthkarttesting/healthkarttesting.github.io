@@ -589,7 +589,6 @@ BrowserStorage.prototype = {
   setItem: function(storageType, storageItemName, storageItemValue){
 
       var type = this.getStorageType(storageType);
-      alert(type);
       if(type && type.setItem && type.getItem) {
           try {
               type.setItem(storageItemName, storageItemValue);
@@ -601,29 +600,30 @@ BrowserStorage.prototype = {
       else {
           document.cookie = storageItemName+"=" + storageItemValue;
       }
-      alert(document.cookie);
   },
 
   removeItem: function(storageType, storageItemName){
       var type = this.getStorageType(storageType);
+      alert(document.cookie);
       if(type && type.setItem && type.getItem) {
           try {
               type.removeItem(storageItemName);
           }
           catch(e) {
+              alert("inside catch");
               document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
           }
       }
       else {
           document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       }
+      alert(document.cookie);
   }
 };
 var browz = new BrowserStorage();
 alert("IN");
 browz.setItem('localStorage','test', 'ABC');
 var setValue = browz.getItem('localStorage', 'test');
-alert(setValue);
 browz.removeItem('localStorage', 'test');
 var setValue1 = browz.getItem('localStorage', 'test');
 alert(setValue1);
