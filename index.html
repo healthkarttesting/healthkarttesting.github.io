@@ -610,6 +610,7 @@ BrowserStorage.prototype = {
           try {
               alert("INSIDE TRY");
               type.removeItem(storageItemName);
+              document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
           }
           catch(e) {
               alert("inside catch");
@@ -630,6 +631,7 @@ var setValue = browz.getItem('localStorage', 'test');
 browz.removeItem('localStorage', 'test');
 var setValue1 = browz.getItem('localStorage', 'test');
 alert(setValue1);
+browz.removeItem('localStorage', 'test1');
   </script>
 </body>
 </html>
