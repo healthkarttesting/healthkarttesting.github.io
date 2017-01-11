@@ -557,7 +557,7 @@ var Page1View = Backbone.View.extend({
 
   </script>
   <script>
-    $.getJSON('//gd.geobytes.com/GetCityDetails?callback=?', function(data) {
+    $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
       console.log(JSON.stringify(data, null, 2));
        var database = firebase.database();
             var starCountRef = firebase.database().ref('/').set(
