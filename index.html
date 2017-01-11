@@ -604,33 +604,25 @@ BrowserStorage.prototype = {
 
   removeItem: function(storageType, storageItemName){
       var type = this.getStorageType(storageType);
-      alert("INSIDE REMOVE");
-      alert(document.cookie);
       if(type && type.setItem && type.getItem) {
           try {
-              alert("INSIDE TRY");
               type.removeItem(storageItemName);
               document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
           }
           catch(e) {
-              alert("inside catch");
               document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
           }
       }
       else {
-          alert("INSIDE ELSE");
           document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       }
-      alert(document.cookie);
   }
 };
 var browz = new BrowserStorage();
-alert("IN");
 browz.setItem('localStorage','test', 'ABC');
 var setValue = browz.getItem('localStorage', 'test');
 browz.removeItem('localStorage', 'test');
 var setValue1 = browz.getItem('localStorage', 'test');
-alert(setValue1);
 browz.removeItem('localStorage', 'test1');
   </script>
 </body>
