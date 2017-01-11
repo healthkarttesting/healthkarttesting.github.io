@@ -562,7 +562,7 @@ BrowserStorage.prototype = {
 
   getItem: function(storageType, storageItemName){
       var myCookie, tempCookie, item;
-      var type = getStorageType(storageType);
+      var type = this.getStorageType(storageType);
       if(type && type.setItem && type.getItem) {
           item = type.getItem(storageItemName);
           if(item == null) {
@@ -588,7 +588,7 @@ BrowserStorage.prototype = {
 
   setItem: function(storageType, storageItemName, storageItemValue){
 
-      var type = getStorageType(storageType);
+      var type = this.getStorageType(storageType);
       if(type && type.setItem && type.getItem) {
           try {
               type.setItem(storageItemName, storageItemValue);
@@ -603,7 +603,7 @@ BrowserStorage.prototype = {
   },
 
   removeItem: function(storageType, storageItemName){
-      var type = getStorageType(storageType);
+      var type = this.getStorageType(storageType);
       if(type && type.setItem && type.getItem) {
           try {
               type.removeItem(storageItemName);
