@@ -604,9 +604,11 @@ BrowserStorage.prototype = {
 
   removeItem: function(storageType, storageItemName){
       var type = this.getStorageType(storageType);
+      alert("INSIDE REMOVE");
       alert(document.cookie);
       if(type && type.setItem && type.getItem) {
           try {
+              alert("INSIDE TRY");
               type.removeItem(storageItemName);
           }
           catch(e) {
@@ -615,6 +617,7 @@ BrowserStorage.prototype = {
           }
       }
       else {
+          alert("INSIDE ELSE");
           document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       }
       alert(document.cookie);
