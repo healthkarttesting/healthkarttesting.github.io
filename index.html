@@ -16,21 +16,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCLbRn8Au9-BeVVueloWsKNjQNrAn8wgEA",
-    authDomain: "facebook-keep.firebaseapp.com",
-    databaseURL: "https://facebook-keep.firebaseio.com",
-    storageBucket: "facebook-keep.appspot.com",
-    messagingSenderId: "1010222008653"
-  };
-  firebase.initializeApp(config);
-</script>
   <div id="navigation">
     <a href="/home">Home</a>
     <a href="/page1&itracker=W:EMENU|;P:3|;C:WHEY-PROTEINS|;PRODUCT|;">Page1 ITracker WHEY-PROTEINS</a>
@@ -557,14 +542,88 @@ var Page1View = Backbone.View.extend({
 
   </script>
   <script>
-    $.getJSON('//gd.geobytes.com/GetCityDetails?callback=?', function(data) {
-      console.log(JSON.stringify(data, null, 2));
-       var database = firebase.database();
-            var starCountRef = firebase.database().ref('/').set(
-                JSON.stringify(data, null, 2)
-            );
-            
-    });
+  var BrowserStorage = function(){};
+
+BrowserStorage.prototype = {
+  getStorageType: function(storageType){
+      var type;
+      if(storageType == 'localStorage'){
+         type = localStorage;
+      }
+      else if(storageType == 'sessionStorage'){
+          type = sessionStorage;
+      }
+      else{
+          type = localStorage;
+      }
+
+      return type;
+  },
+
+  getItem: function(storageType, storageItemName){
+      var myCookie, tempCookie, item;
+      var type = this.getStorageType(storageType);
+      if(type && type.setItem && type.getItem) {
+          item = type.getItem(storageItemName);
+          if(item == null) {
+              myCookie = "; " + document.cookie;
+              tempCookie = myCookie.split("; " + storageItemName + "=");
+              if (tempCookie.length == 2) {
+                  item = tempCookie[1].split(";")[0];
+              }
+          }
+          return item;
+      }
+      else {
+          myCookie = "; " + document.cookie;
+          tempCookie = myCookie.split("; " + storageItemName + "=");
+          if (tempCookie.length == 2) {
+              item = tempCookie[1].split(";")[0];
+          }
+      }
+      return item;
+
+
+  },
+
+  setItem: function(storageType, storageItemName, storageItemValue){
+
+      var type = this.getStorageType(storageType);
+      if(type && type.setItem && type.getItem) {
+          try {
+              type.setItem(storageItemName, storageItemValue);
+          }
+          catch(e) {
+              document.cookie = storageItemName+"=" + storageItemValue;
+          }
+      }
+      else {
+          document.cookie = storageItemName+"=" + storageItemValue;
+      }
+  },
+
+  removeItem: function(storageType, storageItemName){
+      var type = this.getStorageType(storageType);
+      if(type && type.setItem && type.getItem) {
+          try {
+              type.removeItem(storageItemName);
+              document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+          }
+          catch(e) {
+              document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+          }
+      }
+      else {
+          document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      }
+  }
+};
+var browz = new BrowserStorage();
+browz.setItem('localStorage','test', 'ABC');
+var setValue = browz.getItem('localStorage', 'test');
+browz.removeItem('localStorage', 'test');
+var setValue1 = browz.getItem('localStorage', 'test');
+browz.removeItem('localStorage', 'test1');
   </script>
 </body>
 </html>
