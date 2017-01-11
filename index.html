@@ -616,15 +616,15 @@ BrowserStorage.prototype = {
           document.cookie = storageItemName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       }
   }
-  var browz = new BrowserStorage();
-  alert("IN");
-  browz.setItem('localStorage','test', 'ABC');
-  var setValue = browz.getItem('localStorage', 'test');
-  alert(setValue);
-  browz.removeItem('localStorage', 'test');
-  var setValue1 = browz.getItem('localStorage', 'test');
-  alert(setValue1);
 };
+var browz = new BrowserStorage();
+alert("IN");
+browz.setItem('localStorage','test', 'ABC');
+var setValue = browz.getItem('localStorage', 'test');
+alert(setValue);
+browz.removeItem('localStorage', 'test');
+var setValue1 = browz.getItem('localStorage', 'test');
+alert(setValue1);
   </script>
 </body>
 </html>
