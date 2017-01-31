@@ -20,6 +20,49 @@ var imageLoader = document.getElementById('uploadBtn');
     	                }
     	                i.style.display = "block";
     	                console.log("Image loaded");
+                        var encodeButton = document.getElementById('jpeg_encode_button');
+                        var encodeQuality = document.getElementById('jpeg_encode_quality');
+
+                        var console_out = document.getElementById('console_out');
+                        var output_format = "jpg";
+
+                        var source_image = document.getElementById('source_image');
+                        var result_image = document.getElementById('result_image');
+                        if (source_image.src == "") {
+                            alert("You must load an image first!");
+                            return false;
+                        }
+
+                        var quality = parseInt(encodeQuality.value);
+                        console.log("Quality >>" + quality);
+
+                        console.log("process start...");
+                        var time_start = new Date().getTime();
+
+                        result_image.src = jic.compress(source_image,quality,output_format).src;
+
+                        result_image.onload = function(){
+                        	var image_width=$(result_image).width(),
+                            image_height=$(result_image).height();
+
+                	        if(image_width > image_height){
+                	        	result_image.style.width="320px";
+                	        }else{
+                	        	result_image.style.height="300px";
+                	        }
+                	       result_image.style.display = "block";
+
+
+                        }
+                        var duration = new Date().getTime() - time_start;
+
+
+
+
+                        console.log("process finished...");
+                        console.log('Processed in: ' + duration + 'ms');
+
+
 
                	 	}
 
@@ -75,48 +118,11 @@ $(function() {
         this.className = '';
         return false;
     };
-
     var encodeButton = document.getElementById('jpeg_encode_button');
     var encodeQuality = document.getElementById('jpeg_encode_quality');
 
     //HANDLE COMPRESS BUTTON
     encodeButton.addEventListener('click', function(e) {
-
-        var source_image = document.getElementById('source_image');
-        var result_image = document.getElementById('result_image');
-        if (source_image.src == "") {
-            alert("You must load an image first!");
-            return false;
-        }
-
-        var quality = parseInt(encodeQuality.value);
-        console.log("Quality >>" + quality);
-
-        console.log("process start...");
-        var time_start = new Date().getTime();
-
-        result_image.src = jic.compress(source_image,quality,output_format).src;
-
-        result_image.onload = function(){
-        	var image_width=$(result_image).width(),
-            image_height=$(result_image).height();
-
-	        if(image_width > image_height){
-	        	result_image.style.width="320px";
-	        }else{
-	        	result_image.style.height="300px";
-	        }
-	       result_image.style.display = "block";
-
-
-        }
-        var duration = new Date().getTime() - time_start;
-
-
-
-
-        console.log("process finished...");
-        console.log('Processed in: ' + duration + 'ms');
 
 
     }, false);
