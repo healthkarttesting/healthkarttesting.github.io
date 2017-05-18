@@ -13,7 +13,8 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.5.1/fingerprint2.min.js" ></script>
         <script>
-            new Fingerprint2().get(function(result, components){
+            var options = {excludeUserAgent: true};
+            new Fingerprint2(options).get(function(result, components){
                 document.getElementById("fingerprintvalue").innerHTML = `Your finger is: ${result}`;
                 for(component of components) {
                     document.getElementById("componentValues").innerHTML += `<li>${component.key}<ul><li>${component.value}</li></ul></li>`;
