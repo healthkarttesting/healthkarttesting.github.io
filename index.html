@@ -15,9 +15,9 @@
         <script>
             new Fingerprint2().get(function(result, components){
                 document.getElementById("fingerprintvalue").innerHTML = `Your finger is: ${result}`;
-//                 for(component of components) {
-//                     document.getElementById("componentValues").innerHTML += `<li>${component.key}<ul><li>${component.value}</li></ul></li>`;
-//                 }
+                for(component of components) {
+                    document.getElementById("componentValues").innerHTML += `<li>${component.key}<ul><li>${component.value}</li></ul></li>`;
+                }
                 console.log("HALA MADRID");
             });
         </script>
