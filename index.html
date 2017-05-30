@@ -1,25 +1,24 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Fingerprinting</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <h3 id="fingerprintvalue">
-            
-        </h3>
-        <div>
-            <ul id="componentValues">
-            </ul>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.5.1/fingerprint2.min.js" ></script>
-        <script>
-            var options = {excludeUserAgent: true, excludeCanvas: true, excludeWebGL: true};
-            new Fingerprint2(options).get(function(result, components){
-                document.getElementById("fingerprintvalue").innerHTML = `Your finger is: ${result}`;
-                for(component of components) {
-                    document.getElementById("componentValues").innerHTML += `<li>${component.key}<ul><li>${component.value}</li></ul></li>`;
-                }
-            });
-        </script>
-    </body>
+<head>
+	<title></title>
+</head>
+<body>
+<div class="container">
+	<div class="bannerContainer">
+		<img src="a.jpg" />
+	</div>
+	<div style="text-align: center">
+		<h1>SUBSCRIBE FOR NEWSLETTER</h1>
+		<p>
+			Be the first to know about new launches, exclusive offers and health tips!<br />
+			Get connected to 50,000 fitness enthusiasts.
+		</p>
+	</div>
+	<div class="actionsContainer" style="width: 50%; margin: auto;">
+		<input type="text" placeholder="Your Email" style="width: 70%; margin-left: 1px; border: 1px solid #d3d4d5; color: #141516; font-size: 14px; font-weight: 400; height: 35px;" />
+		<button style="width: 25%; color: #fff; border-radius: 4px; background-color: #00bfbf; box-shadow: none; border: none; font-size: 20px; -webkit-appearance: none; max-height: 48px; height: 40px;">Subscribe</button>
+	</div>
+</div>
+</body>
 </html>
